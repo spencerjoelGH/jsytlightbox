@@ -1,0 +1,49 @@
+#jsyt_container {	width: 100%;
+					height: 100%;
+					background-color: rgba(0,0,0,0.9);
+					position: fixed;
+					top:0;
+					left:0;
+					z-index: 9999;
+					display: none;
+	
+}
+
+#jsyt_video_container {
+
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	white-space: nowrap;
+	height: 100%;
+
+
+	
+}
+
+#jsyt_video_wrapper {
+	height: 100%;
+	padding-top: 10%;
+}
+
+#jsyt_video_wrapper iframe {
+	box-shadow: 0 0 130px #000;
+}
+
+
+
+
+
+#jsyt_iframe {
+	width: 100%;
+	height: 100%;
+}
+
+#jsyt_close {
+	font-size: 3vw;
+	color: #FFF;
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
