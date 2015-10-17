@@ -1,3 +1,7 @@
+body {	height: 100%;
+		margin:0;
+	
+}
 #jsyt_container {	width: 100%;
 					height: 100%;
 					background-color: rgba(0,0,0,0.9);

@@ -12,7 +12,7 @@ var YTAPIReady;
 			elements.YTPlayer_container = $('<div id="jsyt_video_wrapper"><div id="jsyt_player"></div></div>');
 			elements.close_button = $('<div id="jsyt_close"><i class="fa fa-times"></i></div>');
 			
-			$(self).append(elements.modal);
+			$('body').append(elements.modal);
 			$(elements.modal).append(elements.video_container);
 			$(elements.modal).append(elements.close_button);
 			$(elements.video_container).append(elements.YTPlayer_container);
