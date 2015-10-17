@@ -10,7 +10,7 @@ var YTAPIReady;
 	var videoID;
 	var config = {};
 	
-	function createContainer(self){
+	function createContainer(){
 		
 			elements.modal = $('<div id="jsyt_container"></div>');
 			elements.video_container = $('<div id="jsyt_video_container"></div>');
@@ -28,18 +28,17 @@ var YTAPIReady;
 	}	
 	
 	function hide(){
+		YTPlayer.stopVideo();
 		$(elements.modal).css("display","none");
 	}
 	
 	
 	function loadOrPlayVideo(videoId){
-		console.log("Load or play video called");
-		  console.log("Stored ID: " + videoID + " New ID: " + videoId);
 		  if(!YTPlayer){
 			  videoID = videoId;
 		  // 2. This code loads the IFrame Player API code asynchronously.
 	      var tag = document.createElement('script');
-	      tag.src = "https://www.youtube.com/iframe_api";
+	      tag.src = "http://www.youtube.com/iframe_api";
 	      var firstScriptTag = document.getElementsByTagName('script')[0];
 	      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
       	  } else {
@@ -70,7 +69,8 @@ var YTAPIReady;
 					    "playsinline" : 0
 					},
           events: {
-            'onReady': onPlayerReady
+            'onReady': onPlayerReady,
+            'onStateChange' : statusChanged
           }
         });
         
@@ -79,7 +79,10 @@ var YTAPIReady;
 	function onPlayerReady(event) {
         event.target.playVideo();
       }
-      
+     
+    function statusChanged(e){
+
+    }
     
     
     function changeVideo(videoID){
@@ -101,8 +104,8 @@ var YTAPIReady;
 		
 		$(config.options.selector).css("cursor","pointer");
 		
-		self = this;
-		createContainer(self);
+		//self = this;
+		createContainer();
 		
 		$(config.options.selector).click(function(){
 			loadOrPlayVideo($(this).attr("data"));
@@ -110,7 +113,7 @@ var YTAPIReady;
 		})
 		
 		$('#jsyt_close').click(function(){
-			YTPlayer.stopVideo();
+			
 			hide();
 		})
 		
