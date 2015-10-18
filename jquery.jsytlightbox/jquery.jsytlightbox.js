@@ -99,7 +99,7 @@ var YTAPIReady;
 		}
 		
 		if(options && typeof options === "object"){
-			if(options.selector) config.options.selector = options.selector;
+			config.options = $.extend(config.options,options);
 		}
 		
 		$(config.options.selector).css("cursor","pointer");
