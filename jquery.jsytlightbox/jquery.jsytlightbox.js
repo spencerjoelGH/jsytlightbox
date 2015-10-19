@@ -50,12 +50,16 @@ var YTAPIReady;
 	      	  }
 	      	 
       	  }
+      	  
+      	  setVideoHeight();
+
+      	  
 	  }
 	
 	YTAPIReady = function(){
 		YTPlayer = new YT.Player('jsyt_player', {
           videoId : videoID,
-          width : "60%",
+          width : config.options.videoWidth,
           height : 490,
           playerVars:
 					{
@@ -74,6 +78,13 @@ var YTAPIReady;
           }
         });
         
+        setVideoHeight();
+        
+	}
+	
+	function setVideoHeight(){
+		$('iframe#jsyt_player').css("height",(parseInt($('iframe#jsyt_player').width()) * 0.57) + "px");
+		$('iframe#jsyt_player').css("margin-top",(($(window).height() - $('iframe#jsyt_player').height()) / 2) + "px");
 	}
 	
 	function onPlayerReady(event) {
@@ -95,7 +106,8 @@ var YTAPIReady;
 		
 		
 		config.options = {
-			selector : '*[media="youtube"]'
+			selector : '*[media="youtube"]',
+			videoWidth : "80%"
 		}
 		
 		if(options && typeof options === "object"){
@@ -121,8 +133,12 @@ var YTAPIReady;
 			hide();
 		})
 		
+		
+		$(window).resize(function(){
+			setVideoHeight();
+		})
+		
 		return this.each(function() {
-
 			});
 		
 		}
