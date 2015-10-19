@@ -51,7 +51,7 @@ var YTAPIReady;
 	      	 
       	  }
       	  
-      	  setVideoHeight();
+      	  setTimeout(function(){setVideoHeight();}, 100);
 
       	  
 	  }
@@ -83,8 +83,10 @@ var YTAPIReady;
 	}
 	
 	function setVideoHeight(){
+		console.log("Video width: " + $('iframe#jsyt_player').width());
 		$('iframe#jsyt_player').css("height",(parseInt($('iframe#jsyt_player').width()) * 0.57) + "px");
 		$('iframe#jsyt_player').css("margin-top",(($(window).height() - $('iframe#jsyt_player').height()) / 2) + "px");
+		console.log("Setting video height:" + (parseInt($('iframe#jsyt_player').width()) * 0.57) + "px");
 	}
 	
 	function onPlayerReady(event) {
